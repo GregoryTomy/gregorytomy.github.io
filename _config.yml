@@ -18,12 +18,14 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+title: Gregory Tomy
+subtitle: Statistics, Machine Learning and Musings.
+description: 
+  Welcome to my personal website and blog! This is where I share my work 
+  experience, projects, and insights on statistics, data science, machine 
+  learning, and AI. Stay up-to-date with my latest posts and discover more 
+  about my background and expertise. Explore my portfolio and get in touch to 
+  learn more about how I can help you tackle your next data-driven challenge.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
@@ -36,6 +38,27 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache 
 
+# Site owner
+author:
+  name: "Gregory Tomy"
+  #avatar: "gt.jpg"
+  bio: Applied mathematics graduate student at University of Colorado Boulder.
+
+
+defaults:
+   # _posts
+   - scope:
+       path: ""
+       type: posts
+     values:
+       layout: single
+       author_profile: false
+       read_time: true
+       comments: true
+       share: false
+       related: true
+       mathjax: true
+       classes: wide
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
