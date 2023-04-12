@@ -45,20 +45,20 @@ author:
   bio: Applied mathematics graduate student at University of Colorado Boulder.
 
 
-defaults:
-   # _posts
-   - scope:
-       path: ""
-       type: posts
-     values:
-       layout: single
-       author_profile: false
-       read_time: true
-       comments: true
-       share: false
-       related: true
-       mathjax: true
-       classes: wide
+# defaults:
+#    # _posts
+#    - scope:
+#        path: ""
+#        type: posts
+#      values:
+#        layout: single
+#        author_profile: false
+#        read_time: true
+#        comments: true
+#        share: false
+#        related: true
+#        mathjax: true
+#        classes: wide
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
