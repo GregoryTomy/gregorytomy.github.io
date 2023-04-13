@@ -1,8 +1,7 @@
 ---
 layout: single
 title:  "Monte Hall Problem With Bayesian Networks"
-date:   2023-03-30 14:21:40 -0600
-categories: jekyll update
+collections: bayesian networks
 classes: wide
 toc: true
 toc_icon: "cog"

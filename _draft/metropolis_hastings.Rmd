@@ -1,0 +1,91 @@
+---
+title: "Metropolis Hastings Algorithm "
+output: html_notebook
+---
+
+
+```{r}
+library(tidyverse)
+library(ggthemes)
+```
+
+
+```{r}
+target <- function(x){
+  0.5 * dnorm(x, mean = -2, sd = 1) + 0.5 * dnorm(x, mean = 2, sd = 1)
+}
+
+x_vals <- seq(-6, 6, 0.1)
+
+t_dist <- target(x_vals)
+
+df <- data.frame(x = x_vals, y = t_dist)
+g <- ggplot(df, aes(x = x, y = y)) +
+  geom_line() +
+  theme_fivethirtyeight()
+g + ggtitle("Target distribution")
+```
+
+
+
+```{r}
+x0 <- 0.6
+y0 <- 1.3
+
+prop_dist <- dnorm(x_vals, mean = x0, sd = 0.4) / 5 # to make it look good.
+
+g +
+  geom_line(aes(y = prop_dist), color = "#FF1493") +
+  geom_point(x = x0,  y = 0, color = "black", alpha = 0.1) +
+  geom_point(x = y0,  y = 0, color = "red") +
+  geom_segment(aes(x = x0, y = 0, xend = x0, yend = target(x0)), 
+               linetype = 2, color = "black", alpha = 0.1) +
+  geom_segment(aes(x = y0, y = 0, xend = y0, yend = target(y0)), 
+               linetype = 2, color = "black", alpha = 0.1) +
+  geom_text(aes(x = x0, y = 0, label = "x_0"), vjust = 1.2, hjust = 1.4) 
+```
+
+# Testing out the algorithm
+
+```{r}
+metropolis <- function(proposal_sd, iterations){
+  x <- rep(0, iterations)
+  
+  for (t in 2:iterations) {
+    # propose new x
+    y <- rnorm(1, mean = x[t - 1], sd = proposal_sd)
+    
+    # compute acceptance probability
+    alpha <- target(y) / target(x[t - 1])
+    u <- runif(1)
+    
+    if (u <= alpha) {
+      x[t] = y
+    } else{
+      x[t] = x[t - 1]
+    }
+  }
+  
+  return(x)
+}
+```
+
+```{r}
+set.seed(123)
+test <- metropolis(0.4, 100000)
+df <- data.frame(x = test)
+
+ggplot(df, aes(x)) +
+  geom_histogram(aes(y = ..density..), color = "white", bins = 100, fill = "lightblue" ) +
+  geom_density() +
+  theme_fivethirtyeight() +
+  ggtitle("Metropolis Sampling")
+
+```
+
+```{r}
+plot(test, type = "l")
+```
+
+
+  
