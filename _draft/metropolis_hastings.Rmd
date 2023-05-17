@@ -42,7 +42,9 @@ g +
                linetype = 2, color = "black", alpha = 0.1) +
   geom_segment(aes(x = y0, y = 0, xend = y0, yend = target(y0)), 
                linetype = 2, color = "black", alpha = 0.1) +
-  geom_text(aes(x = x0, y = 0, label = "x_0"), vjust = 1.2, hjust = 1.4) 
+  geom_text(aes(x = x0, y = 0, label = "x0"), vjust = 1.2, hjust = 1.4) +
+  geom_text(aes(x = y0, y = 0, label = "y0"), vjust = 1.2, hjust = 1.4,
+            color = "#FF1493") 
 ```
 
 # Testing out the algorithm
@@ -72,8 +74,8 @@ metropolis <- function(proposal_sd, iterations){
 
 ```{r}
 set.seed(123)
-test <- metropolis(0.4, 100000)
-df <- data.frame(x = test)
+metro_seq <- metropolis(0.4, 100000)
+df <- data.frame(x = metro_seq)
 
 ggplot(df, aes(x)) +
   geom_histogram(aes(y = ..density..), color = "white", bins = 100, fill = "lightblue" ) +
@@ -87,5 +89,8 @@ ggplot(df, aes(x)) +
 plot(test, type = "l")
 ```
 
+```{r}
+
+```
 
   
