@@ -1,12 +1,9 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - GregoryTomy
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - GregoryTomy/lung-nodule-classifier
+  - GregoryTomy/causal-inference
+  - GregoryTomy/sentiment-service
+  - GregoryTomy/Bayesian-Networks
+  - GregoryTomy/asset-backed-security-modelling
